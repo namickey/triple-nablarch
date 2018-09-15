@@ -13,27 +13,27 @@ import javax.ws.rs.core.MediaType;
  */
 public class ProjectClient {
 
-    /** プロジェクト登録URL */
-    private static final String TARGET_URL = "http://localhost:9080/ProjectSaveAction";
+    /** プロジェクトSAVE */
+    private static final String TARGET_SAVE_URL = "http://localhost:9080/ProjectSaveAction";
+    /** プロジェクトUPDATE */
+    private static final String TARGET_UPDATE_URL = "http://localhost:9080/ProjectUpdateAction";
 
     public static void main(String[] args) throws Exception {
 
-        // バリデーションエラーが発生するプロジェクト情報を登録
-        //postProject(getInvalidProject());
+        postProject(getValidProject(), TARGET_SAVE_URL);
 
-        // 正常なプロジェクト情報を登録
-        postProject(getValidProject());
+        postProject(getValidProject(), TARGET_UPDATE_URL);
 
     }
 
     /**
-     * プロジェクトをPOSTして登録する。
-     * @param project 登録プロジェクト
+     * プロジェクトクライアント
+     * @param project プロジェクト
      */
-    private static void postProject(ProjectForm project) {
+    private static void postProject(ProjectForm project, String url) {
 
         int statusCode = ClientBuilder.newClient()
-                .target(TARGET_URL)
+                .target(url)
                 .request(MediaType.APPLICATION_JSON)
                 .acceptEncoding("UTF-8")
                 .acceptLanguage("ja")

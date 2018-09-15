@@ -98,7 +98,7 @@ public class ProjectSaveAction extends MessagingAction {
 //        project.setAllocationOfCorpExpenses(4000);
         project.setVersion(0L); //楽観排他で使用するバージョン番号｡初期値ゼロ｡
 
-        ParameterizedSqlPStatement pStatement = getParameterizedSqlStatement("INSERT_PROJECT", project);
+        ParameterizedSqlPStatement pStatement = getParameterizedSqlStatement("INSERT_PROJECT");
         int i = pStatement.executeUpdateByObject(project);
 
         System.out.println("insert:" + i);

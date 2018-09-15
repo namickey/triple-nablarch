@@ -9,20 +9,21 @@ INSERT_PROJECT=
 INSERT INTO
   PROJECT
 VALUES(
-:projectId,
-:projectName,
-:projectType,
-:projectClass,
-:projectStartDate,
-:projectEndDate,
-:clientId,
-:projectManager,
-:projectLeader,
-:userId,
-:note,
-:sales,
-:costOfGoodsSold,
-:sga,
-:allocationOfCorpExpenses,
-:version
+  :projectId,
+  :projectName,
+  :projectType,
+  :projectClass,
+  :projectStartDate,
+  :projectEndDate,
+  :clientId,
+  :projectManager,
+  :projectLeader,
+  :userId,
+  :note,
+  :sales,
+  :costOfGoodsSold,
+  :sga,
+  :allocationOfCorpExpenses,
+  :version
 )
+
