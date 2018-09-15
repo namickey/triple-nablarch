@@ -23,7 +23,7 @@
     <import file="file.xml" />
 
     <!-- ハンドラキュー構成 -->
-    <component name="webFrontController" class="nablarch.fw.web.servlet.WebFrontController">
+    <component name="httpFrontController" class="nablarch.fw.web.servlet.WebFrontController">
         <property name="handlerQueue">
             <list>
                 <!-- スレッドコンテキスト変数削除ハンドラ -->
