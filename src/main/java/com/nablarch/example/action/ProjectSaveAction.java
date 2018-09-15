@@ -5,6 +5,10 @@ import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.dataformat.DataRecordFormatter;
 import nablarch.core.dataformat.FormatterFactory;
+import nablarch.core.db.statement.ParameterizedSqlPStatement;
+import nablarch.core.db.statement.SqlPStatement;
+import nablarch.core.db.statement.SqlResultSet;
+import nablarch.core.db.statement.SqlRow;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.util.FilePathSetting;
 import nablarch.core.validation.ee.ValidatorUtil;
@@ -16,8 +20,10 @@ import nablarch.fw.messaging.action.MessagingAction;
 import nablarch.fw.web.HttpResponse;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -48,24 +54,63 @@ public class ProjectSaveAction extends MessagingAction {
 
         // 入力値をフォームにバインドする
         ProjectForm form = BeanUtil.createAndCopy(ProjectForm.class, requestMessage.getParamMap());
-
         // バリデーションエラーがある場合は業務例外を送出
         ValidatorUtil.validate(form);
-        UniversalDao.insert(BeanUtil.createAndCopy(Project.class, form));
+
+
+
+
+        //project_idの最大値を取得｡重複してしまう可能性があるので本来はシーケンスか採番テーブルを使うべき｡
+        SqlPStatement statement = getSqlPStatement("SELECT_MAX_PROJECT_ID");
+        SqlResultSet rs = statement.retrieve();
+        int max = rs.get(0).getInteger("project_id");
+
+        //↓参考
+        System.out.println("size:" + rs.size());
+        for (SqlRow row : rs){
+            for(String key:row.keySet()){
+                System.out.println("key:" + key);
+            }
+            System.out.println("max:" + row.getInteger("project_id"));
+        }
+        //↑参考
+
+
+        //コピーして､プロジェクトEntityを生成する｡
+        Project project = BeanUtil.createAndCopy(Project.class, form);
+
+
+//        //insert
+//        Project project = new Project();
+        project.setProjectId(max + 1); //カウントアップ｡シーケンスを使う場合はカウントアップ不要｡
+//        project.setProjectName("プロジェクト名");
+//        project.setProjectType("development");
+//        project.setProjectClass("a");
+//        project.setProjectStartDate(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
+//        project.setProjectEndDate(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
+//        project.setClientId(1);
+//        project.setProjectManager("佐藤");
+//        project.setProjectLeader("鈴木");
+//        project.setNote("備考８８８");
+//        project.setSales(20000);
+//        project.setCostOfGoodsSold(2000);
+//        project.setSga(3000);
+//        project.setAllocationOfCorpExpenses(4000);
+        project.setVersion(0L); //楽観排他で使用するバージョン番号｡初期値ゼロ｡
+
+        ParameterizedSqlPStatement pStatement = getParameterizedSqlStatement("INSERT_PROJECT", project);
+        int i = pStatement.executeUpdateByObject(project);
+
+        System.out.println("insert:" + i);
+
+
+
 
         // 応答電文のフォーマッタを作成する
         requestMessage.setFormatterOfReply(createFormatter());
-
         // 応答電文に記載するステータスコードを設定する
         Map<String, String> map = new HashMap<>();
         map.put("statusCode", String.valueOf(HttpResponse.Status.CREATED.getStatusCode()));
-
-        List<Project> list = UniversalDao.findAll(Project.class);
-        for (Project proj:list) {
-            System.out.println(proj.getProjectId());
-            System.out.println(proj.getProjectName());
-        }
-
         // 応答データ返却
         return requestMessage.reply()
                 .setStatusCodeHeader(String.valueOf(HttpResponse.Status.CREATED.getStatusCode()))
