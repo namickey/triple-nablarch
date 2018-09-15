@@ -1,6 +1,6 @@
 package com.nablarch.example.client;
 
-import com.nablarch.example.form.ProjectForm;
+import com.nablarch.example.http.form.ProjectForm;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;

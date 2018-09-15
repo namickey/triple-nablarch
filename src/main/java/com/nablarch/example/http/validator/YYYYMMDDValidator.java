@@ -1,4 +1,4 @@
-package com.nablarch.example.validator;
+package com.nablarch.example.http.validator;
 
 import nablarch.core.util.DateUtil;
 import nablarch.core.util.StringUtil;

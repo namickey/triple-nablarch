@@ -1,4 +1,4 @@
-package com.nablarch.example.domain;
+package com.nablarch.example.http.domain;
 
 import nablarch.core.validation.ee.DomainManager;
 

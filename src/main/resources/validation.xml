@@ -6,6 +6,6 @@
 
     <import file="nablarch/core/validation/charset-definition.xml"/>
 
-    <component name="domainManager" class="com.nablarch.example.domain.HttpMessagingExampleDomainManager"/>
+    <component name="domainManager" class="com.nablarch.example.http.domain.HttpMessagingExampleDomainManager"/>
 
 </component-configuration>

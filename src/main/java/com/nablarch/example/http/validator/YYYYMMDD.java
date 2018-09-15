@@ -1,4 +1,4 @@
-package com.nablarch.example.validator;
+package com.nablarch.example.http.validator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.nablarch.example.code;
+package com.nablarch.example.http.code;
 
 /**
  * コード値Enumを定義したインタフェース。

@@ -1,7 +1,7 @@
-package com.nablarch.example.validator;
+package com.nablarch.example.http.validator;
 
 
-import com.nablarch.example.code.CodeEnum;
+import com.nablarch.example.http.code.CodeEnum;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

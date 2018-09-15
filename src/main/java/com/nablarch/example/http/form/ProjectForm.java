@@ -1,4 +1,4 @@
-package com.nablarch.example.form;
+package com.nablarch.example.http.form;
 
 import java.util.Date;
 import java.util.regex.Pattern;

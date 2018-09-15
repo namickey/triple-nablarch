@@ -1,4 +1,4 @@
-package com.nablarch.example.code;
+package com.nablarch.example.http.code;
 
 /**
  * プロジェクト分類を定義したEnumクラス。

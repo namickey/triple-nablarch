@@ -1,6 +1,6 @@
 package com.nablarch.example.http.action;
 
-import com.nablarch.example.form.ProjectForm;
+import com.nablarch.example.http.form.ProjectForm;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.dataformat.DataRecordFormatter;
 import nablarch.core.dataformat.FormatterFactory;

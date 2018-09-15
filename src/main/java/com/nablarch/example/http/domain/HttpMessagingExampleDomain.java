@@ -1,9 +1,9 @@
-package com.nablarch.example.domain;
+package com.nablarch.example.http.domain;
 
-import com.nablarch.example.code.ProjectClass;
-import com.nablarch.example.code.ProjectType;
-import com.nablarch.example.validator.CodeValue;
-import com.nablarch.example.validator.YYYYMMDD;
+import com.nablarch.example.http.code.ProjectClass;
+import com.nablarch.example.http.code.ProjectType;
+import com.nablarch.example.http.validator.CodeValue;
+import com.nablarch.example.http.validator.YYYYMMDD;
 import nablarch.core.validation.ee.Digits;
 import nablarch.core.validation.ee.Length;
 import nablarch.core.validation.ee.NumberRange;
