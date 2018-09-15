@@ -10,5 +10,3 @@ out/
 /.settings/
 .classpath
 .project
-target/
-h2/
