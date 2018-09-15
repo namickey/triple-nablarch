@@ -51,8 +51,8 @@
                 <!-- リクエストディスパッチハンドラ -->
                 <component class="nablarch.fw.handler.RequestPathJavaPackageMapping">
                     <property name="immediate" value="false"/>
-                    <property name="basePath" value="/"/>
-                    <property name="basePackage" value="com.nablarch.example.action"/>
+                    <property name="basePath" value="/http/"/>
+                    <property name="basePackage" value="com.nablarch.example.http.action"/>
                 </component>
 
                 <!-- HTTPメッセージングリクエスト変換ハンドラ -->

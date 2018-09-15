@@ -1,4 +1,4 @@
-package com.nablarch.example.action;
+package com.nablarch.example.http.action;
 
 import com.nablarch.example.form.ProjectForm;
 import nablarch.core.beans.BeanUtil;
@@ -72,7 +72,7 @@ public class ProjectUpdateAction extends MessagingAction {
     }
 
     private static DataRecordFormatter createFormatter() {
-        File file = FilePathSetting.getInstance().getFileIfExists("format", "ProjectSaveAction_REPLY");
+        File file = FilePathSetting.getInstance().getFileIfExists("format", "http/ProjectSaveAction_REPLY");
         if (file == null) {
             throw new IllegalStateException("format file does not exist.");
         }

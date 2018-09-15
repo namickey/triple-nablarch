@@ -1,7 +1,6 @@
-package com.nablarch.example.action;
+package com.nablarch.example.http.action;
 
 import com.nablarch.example.form.ProjectForm;
-import nablarch.common.dao.UniversalDao;
 import nablarch.core.beans.BeanUtil;
 import nablarch.core.dataformat.DataRecordFormatter;
 import nablarch.core.dataformat.FormatterFactory;
@@ -20,9 +19,6 @@ import nablarch.fw.messaging.action.MessagingAction;
 import nablarch.fw.web.HttpResponse;
 
 import java.io.File;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -159,7 +155,7 @@ public class ProjectSaveAction extends MessagingAction {
      * @return レコードフォーマット
      */
     private static DataRecordFormatter createFormatter() {
-        File file = FilePathSetting.getInstance().getFileIfExists("format", "ProjectSaveAction_REPLY");
+        File file = FilePathSetting.getInstance().getFileIfExists("format", "http/ProjectSaveAction_REPLY");
         if (file == null) {
             throw new IllegalStateException("format file does not exist.");
         }

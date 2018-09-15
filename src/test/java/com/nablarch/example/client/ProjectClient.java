@@ -14,9 +14,9 @@ import javax.ws.rs.core.MediaType;
 public class ProjectClient {
 
     /** プロジェクトSAVE */
-    private static final String TARGET_SAVE_URL = "http://localhost:9080/ProjectSaveAction";
+    private static final String TARGET_SAVE_URL = "http://localhost:9080/http/ProjectSaveAction";
     /** プロジェクトUPDATE */
-    private static final String TARGET_UPDATE_URL = "http://localhost:9080/ProjectUpdateAction";
+    private static final String TARGET_UPDATE_URL = "http://localhost:9080/http/ProjectUpdateAction";
 
     public static void main(String[] args) throws Exception {
 
