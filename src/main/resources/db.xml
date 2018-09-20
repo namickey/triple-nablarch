@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration http://tis.co.jp/nablarch/component-configuration">
 
-  <import file="nablarch/core/db/connection-factory-datasource.xml"/>
+  <import file="connection-factory-datasource.xml"/>
 
   <component name="dataSource" class="org.h2.jdbcx.JdbcDataSource">
     <property name="url" value="${nablarch.db.url}" />
@@ -14,5 +14,11 @@
 
   <!-- ダイアレクト設定 -->
   <component name="dialect" class="nablarch.core.db.dialect.H2Dialect"/>
+
+  <component name="another1" class="nablarch.core.db.transaction.SimpleDbTransactionManager">
+    <property name="connectionFactory" ref="connectionFactory" />
+    <property name="transactionFactory" ref="transactionFactory" />
+    <property name="dbTransactionName" value="another1" />
+  </component>
 
 </component-configuration>

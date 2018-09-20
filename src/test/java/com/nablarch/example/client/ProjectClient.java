@@ -17,12 +17,16 @@ public class ProjectClient {
     private static final String TARGET_SAVE_URL = "http://localhost:9080/http/ProjectSaveAction";
     /** プロジェクトUPDATE */
     private static final String TARGET_UPDATE_URL = "http://localhost:9080/http/ProjectUpdateAction";
+    /** プロジェクトUPDATE */
+    private static final String TARGET_DOUBLE_HAND_URL = "http://localhost:9080/http/ProjectDoubleHandAction";
 
     public static void main(String[] args) throws Exception {
 
         postProject(getValidProject(), TARGET_SAVE_URL);
 
         postProject(getValidProject(), TARGET_UPDATE_URL);
+
+        postProject(getValidProject(), TARGET_DOUBLE_HAND_URL);
 
     }
 
